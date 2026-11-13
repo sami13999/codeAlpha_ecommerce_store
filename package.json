@@ -1,0 +1,42 @@
+{
+  "name": "maison-ecommerce-store",
+  "version": "1.0.0",
+  "description": "Enterprise-grade Full-Stack E-Commerce Application with Node.js, Express.js, and MySQL 8.0",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node server/server.js",
+    "test": "node tests/run-all-tests.js",
+    "test:auth": "node tests/auth.test.js",
+    "test:products": "node tests/products.test.js",
+    "test:cart": "node tests/cart.test.js",
+    "test:orders": "node tests/orders.test.js",
+    "seed": "node scripts/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sami13999/codeAlpha_ecommerce_store.git"
+  },
+  "keywords": [
+    "ecommerce",
+    "nodejs",
+    "express",
+    "mysql",
+    "mysql2",
+    "jwt",
+    "cod",
+    "fullstack"
+  ],
+  "author": "Sami Akhunzada",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.24.6"
+  }
+}

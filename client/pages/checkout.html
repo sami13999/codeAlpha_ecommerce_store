@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — Maison & Co.</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/responsive.css" />
+</head>
+<body>
+
+  <!-- Announcement Strip -->
+  <div class="announcement-bar">
+    <span>Insured courier shipping. Zero upfront charges — Cash on Delivery only.</span>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="site-logo">
+          Maison <span>&amp;</span> Co.
+        </a>
+        <div style="font-size: 0.9rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem;">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          Encrypted Checkout
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 3rem; padding-bottom: 6rem;">
+    
+    <div style="margin-bottom: 2.5rem;">
+      <span class="subheading-label">Acquisition Order</span>
+      <h1 class="heading-section" style="font-size: 2.25rem;">Finalize Acquisition</h1>
+    </div>
+
+    <div id="checkout-page-grid" class="checkout-layout" style="display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 3.5rem; align-items: start;">
+      
+      <!-- Checkout Form Left Column -->
+      <div id="checkout-form-container">
+        <form id="checkout-form" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 2.5rem;">
+          
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem;">1. Delivery Destination</h3>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label" for="shipping_name">Full Recipient Name <span class="req">*</span></label>
+              <input type="text" id="shipping_name" name="shipping_name" class="form-input" required placeholder="e.g. Sami Akhunzada" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="shipping_phone">Contact Phone <span class="req">*</span></label>
+              <input type="tel" id="shipping_phone" name="shipping_phone" class="form-input" required placeholder="e.g. +92 300 1234567" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="shipping_address_line1">Street Address <span class="req">*</span></label>
+            <input type="text" id="shipping_address_line1" name="shipping_address_line1" class="form-input" required placeholder="House/Apartment #, Street, Sector or Area" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="shipping_address_line2">Apartment / Suite / Landmark (Optional)</label>
+            <input type="text" id="shipping_address_line2" name="shipping_address_line2" class="form-input" placeholder="e.g. Floor 3, Near Jinnah Park" />
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label" for="shipping_city">City <span class="req">*</span></label>
+              <input type="text" id="shipping_city" name="shipping_city" class="form-input" required placeholder="e.g. Islamabad, Lahore, Karachi" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="shipping_state">Province / State</label>
+              <input type="text" id="shipping_state" name="shipping_state" class="form-input" placeholder="e.g. Punjab" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="shipping_postal_code">Postal Code</label>
+              <input type="text" id="shipping_postal_code" name="shipping_postal_code" class="form-input" placeholder="e.g. 44000" />
+            </div>
+          </div>
+
+          <input type="hidden" name="shipping_country" value="Pakistan" />
+
+          <div class="form-group">
+            <label class="form-label" for="customer_note">Delivery Instructions (Optional)</label>
+            <textarea id="customer_note" name="customer_note" class="form-textarea" rows="2" placeholder="e.g. Please call before arrival or leave with security."></textarea>
+          </div>
+
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin: 2rem 0 1rem; border-top: 1px solid var(--border-subtle); padding-top: 1.75rem;">
+            2. Payment Method
+          </h3>
+
+          <div style="background: var(--bg-subtle); border: 2px solid var(--accent); border-radius: var(--radius-sm); padding: 1.25rem; display: flex; align-items: flex-start; gap: 1rem;">
+            <input type="radio" id="payment_cod" name="payment_method" value="COD" checked style="margin-top: 4px; accent-color: var(--accent);" />
+            <div>
+              <label for="payment_cod" style="font-weight: 700; font-size: 1rem; cursor: pointer;">
+                Cash on Delivery (COD)
+              </label>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem; line-height: 1.5;">
+                Zero prepayment required. You will hand the exact total cash amount to the courier representative upon doorstep delivery and physical package inspection.
+              </p>
+            </div>
+          </div>
+
+          <div style="margin-top: 2.5rem;">
+            <button type="submit" id="place-order-btn" class="btn btn-primary btn-full btn-lg">
+              Confirm &amp; Place Order (COD)
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Right Column Order Preview -->
+      <div id="checkout-summary-card" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 2rem; position: sticky; top: 100px;">
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem;">Artifacts in Order</h3>
+        
+        <div id="checkout-items-list" style="max-height: 320px; overflow-y: auto; margin-bottom: 1.5rem;">
+          <!-- Items populated via checkout.js -->
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.925rem; border-top: 1px solid var(--border-subtle); padding-top: 1rem;">
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: var(--text-secondary);">Subtotal</span>
+            <span id="chk-subtotal" style="font-weight: 600;">Rs. 0.00</span>
+          </div>
+
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: var(--text-secondary);">Courier Delivery</span>
+            <span id="chk-delivery" style="font-weight: 600;">Complimentary</span>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; font-size: 1.25rem; font-weight: 700; border-top: 1px solid var(--border-strong); padding-top: 1rem; margin-top: 0.5rem;">
+            <span>Total Payable</span>
+            <span id="chk-total" style="color: var(--accent);">Rs. 0.00</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Maison &amp; Co. All rights reserved.</div>
+        <div>Transactions protected under transactional row locking.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/checkout.js"></script>
+</body>
+</html>
+
