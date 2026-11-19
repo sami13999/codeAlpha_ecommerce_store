@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Address Dossier — Maison &amp; Co.</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/responsive.css" />
+</head>
+<body>
+
+  <div class="announcement-bar">
+    <span>Insured Courier Dispatch • Payment via Cash on Delivery (COD) Only</span>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="site-logo">
+          Maison <span>&amp;</span> Co.
+        </a>
+
+        <nav>
+          <ul class="desktop-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/shop">Catalog</a></li>
+            <li><a href="/categories">Departments</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a href="/cart" class="icon-btn" id="nav-cart-link" title="Shopping Bag">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="cart-badge" id="cart-count-badge" style="display:none;">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 3rem 0 5rem;">
+    <div class="container">
+      
+      <div style="margin-bottom: 2.5rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="subheading-label">Customer Dossier</span>
+          <h1 class="heading-section" style="margin-top: 0.25rem;">Delivery Address Book</h1>
+        </div>
+        <button id="open-add-address-btn" class="btn btn-primary btn-sm">
+          + Add New Address
+        </button>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 240px 1fr; gap: 3rem; align-items: start;">
+        
+        <!-- Sidebar Navigation -->
+        <aside style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.5rem;">
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.95rem;">
+            <li>
+              <a href="/account" style="display: block; padding: 0.6rem 0.85rem; border-radius: var(--radius-xs); color: var(--text-secondary);">Overview</a>
+            </li>
+            <li>
+              <a href="/account/orders" style="display: block; padding: 0.6rem 0.85rem; border-radius: var(--radius-xs); color: var(--text-secondary);">Orders</a>
+            </li>
+            <li>
+              <a href="/account/addresses" style="display: block; padding: 0.6rem 0.85rem; border-radius: var(--radius-xs); background: var(--bg-subtle); color: var(--accent); font-weight: 600;">Address Book</a>
+            </li>
+            <li>
+              <a href="/account/profile" style="display: block; padding: 0.6rem 0.85rem; border-radius: var(--radius-xs); color: var(--text-secondary);">Profile &amp; Password</a>
+            </li>
+            <li>
+              <a href="/wishlist" style="display: block; padding: 0.6rem 0.85rem; border-radius: var(--radius-xs); color: var(--text-secondary);">Saved Wishlist</a>
+            </li>
+            <li style="border-top: 1px solid var(--border-subtle); margin-top: 0.5rem; padding-top: 0.5rem;">
+              <button onclick="logout()" style="display: block; width: 100%; text-align: left; padding: 0.6rem 0.85rem; color: var(--error); font-weight: 500; cursor: pointer;">Sign Out</button>
+            </li>
+          </ul>
+        </aside>
+
+        <!-- Right Content: Addresses Grid -->
+        <div>
+          <div id="account-addresses-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div class="skeleton" style="height: 200px; border-radius: var(--radius-md);"></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Address Modal -->
+  <div id="address-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; padding: 1.5rem;">
+    <div style="background: var(--bg-surface); border-radius: var(--radius-md); max-width: 520px; width: 100%; padding: 2.5rem; position: relative; max-height: 90vh; overflow-y: auto;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <h3 id="address-modal-title" style="font-family: var(--font-serif); font-size: 1.35rem;">Add New Delivery Address</h3>
+        <button type="button" id="close-address-modal" style="font-size: 1.5rem; color: var(--text-muted); cursor: pointer; background: none; border: none;">&times;</button>
+      </div>
+
+      <form id="address-form" style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <input type="hidden" id="address-form-id" value="" />
+        
+        <div>
+          <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.35rem;">Full Name *</label>
+          <input type="text" id="addr_full_name" required placeholder="Eleanor Vance" style="width: 100%; border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 0.65rem 0.85rem;" />
+        </div>
+
+        <div>
+          <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.35rem;">Phone Number (for Courier Dispatch) *</label>
+          <input type="tel" id="addr_phone" required placeholder="+92 300 1234567" style="width: 100%; border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 0.65rem 0.85rem;" />
+        </div>
+
+        <div>
+          <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.35rem;">Street Address Line 1 *</label>
+          <input type="text" id="addr_line1" required placeholder="House / Suite / Street name" style="width: 100%; border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 0.65rem 0.85rem;" />
+        </div>
+
+        <div>
+          <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.35rem;">Street Address Line 2 (Optional)</label>
+          <input type="text" id="addr_line2" placeholder="Apartment, unit, landmark" style="width: 100%; border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 0.65rem 0.85rem;" />
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div>
+            <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.35rem;">City *</label>
+            <input type="text" id="addr_city" required placeholder="Lahore" style="width: 100%; border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 0.65rem 0.85rem;" />
+          </div>
+          <div>
+            <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.35rem;">State / Province</label>
+            <input type="text" id="addr_state" placeholder="Punjab" style="width: 100%; border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 0.65rem 0.85rem;" />
+          </div>
+        </div>
+
+        <div>
+          <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.35rem;">Postal Code</label>
+          <input type="text" id="addr_postal" placeholder="54000" style="width: 100%; border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 0.65rem 0.85rem;" />
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+          <input type="checkbox" id="addr_is_default" />
+          <label for="addr_is_default" style="font-size: 0.875rem;">Set as my default destination for checkouts</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full" style="margin-top: 0.5rem;">Save Destination</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>&copy; 2026 Maison &amp; Co. All rights reserved.</span>
+        <span>Payment: Pure Cash on Delivery (COD).</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/auth.js"></script>
+  <script src="/assets/js/account.js"></script>
+</body>
+</html>
+

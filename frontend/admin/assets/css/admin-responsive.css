@@ -1,0 +1,188 @@
+/* ==========================================================================
+   Admin Responsive Styles
+   E-Commerce Store Administration System
+   ========================================================================== */
+
+/* --- Tablet & Small Desktop (<= 1024px) --- */
+@media (max-width: 1024px) {
+  :root {
+    --admin-sidebar-w: 260px;
+  }
+
+  .admin-sidebar {
+    transform: translateX(-100%);
+    transition: transform var(--admin-transition-base);
+    box-shadow: var(--admin-shadow-xl);
+    z-index: 1050;
+  }
+
+  .sidebar-open .admin-sidebar {
+    transform: translateX(0);
+  }
+
+  /* Backdrop for mobile drawer */
+  .admin-sidebar-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(2px);
+    z-index: 1040;
+  }
+
+  .sidebar-open .admin-sidebar-backdrop {
+    display: block;
+  }
+
+  .admin-main {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .mobile-menu-toggle {
+    display: inline-flex !important;
+  }
+
+  .admin-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .analytics-charts-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .admin-two-col {
+    grid-template-columns: 1fr !important;
+  }
+
+  .admin-detail-layout {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* --- Mobile Landscape / Large Phones (<= 768px) --- */
+@media (max-width: 768px) {
+  .admin-content {
+    padding: var(--admin-space-4);
+  }
+
+  .admin-topbar {
+    padding: 0 var(--admin-space-4);
+    height: 56px;
+  }
+
+  .topbar-breadcrumbs {
+    display: none;
+  }
+
+  .admin-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--admin-space-3);
+  }
+
+  .admin-header-actions {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--admin-space-2);
+  }
+
+  .admin-header-actions > * {
+    flex: 1 1 auto;
+  }
+
+  .admin-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-filter-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .admin-filter-group select,
+  .admin-filter-group input {
+    width: 100%;
+  }
+
+  .admin-search-input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .admin-table-card .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--admin-space-2);
+  }
+
+  .admin-pagination {
+    flex-direction: column;
+    gap: var(--admin-space-3);
+    align-items: center;
+    text-align: center;
+  }
+
+  .admin-modal-dialog {
+    max-width: 95vw;
+    margin: var(--admin-space-4);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .admin-status-timeline {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .timeline-step {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .timeline-line {
+    display: none;
+  }
+
+  .timeline-connector {
+    width: 2px;
+    height: 24px;
+    background: var(--admin-border-light);
+    margin-left: 14px;
+  }
+}
+
+/* --- Small Mobile Phones (<= 480px) --- */
+@media (max-width: 480px) {
+  .admin-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-btn {
+    padding: 8px 12px;
+    font-size: var(--admin-font-xs);
+  }
+
+  .admin-user-info span {
+    display: none;
+  }
+
+  .admin-card-body {
+    padding: var(--admin-space-4);
+  }
+
+  .admin-metric-card {
+    padding: var(--admin-space-4);
+  }
+
+  .admin-metric-value {
+    font-size: var(--admin-font-2xl);
+  }
+}

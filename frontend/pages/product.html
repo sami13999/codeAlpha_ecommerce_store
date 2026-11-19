@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artifact Details — Maison &amp; Co.</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/responsive.css" />
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    <span>Complimentary courier transit across Pakistan on orders over Rs. 3,500 • Pure Cash on Delivery (COD)</span>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-inner">
+        <button class="mobile-nav-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <a href="/" class="site-logo">
+          Maison <span>&amp;</span> Co.
+        </a>
+
+        <nav>
+          <ul class="desktop-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/shop">Catalog</a></li>
+            <li><a href="/categories">Departments</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <form class="header-search header-search-form" role="search">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="search" placeholder="Search catalog..." aria-label="Search items" />
+          </form>
+
+          <a href="/wishlist" class="icon-btn" id="nav-wishlist-link" title="Wishlist">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            <span class="cart-badge" id="wishlist-count-badge" style="display:none;">0</span>
+          </a>
+
+          <a href="/login" class="icon-btn" id="nav-account-link" title="Customer Account">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </a>
+          <span id="nav-user-name" style="font-size:0.85rem; font-weight:600; display:none; max-width:90px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"></span>
+
+          <a href="/cart" class="icon-btn" id="nav-cart-link" title="Shopping Bag">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="cart-badge" id="cart-count-badge" style="display:none;">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop"></div>
+    <div class="mobile-drawer-content">
+      <div class="mobile-drawer-header">
+        <span class="site-logo" style="font-size: 1.25rem;">Maison <span>&amp;</span> Co.</span>
+        <button id="mobile-drawer-close" style="padding: 0.5rem; color: var(--text-muted); font-size: 1.5rem;">&times;</button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Catalog</a></li>
+        <li><a href="/categories">Departments</a></li>
+        <li><a href="/wishlist">Saved Artifacts</a></li>
+        <li><a href="/cart">Shopping Bag</a></li>
+        <li><a href="/account" id="mobile-nav-account">My Account</a></li>
+        <li><a href="/about">Our Story</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <main style="padding: 3rem 0 5rem;">
+    <div class="container">
+      
+      <!-- Breadcrumb -->
+      <nav style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem;">
+        <a href="/">Home</a> <span style="margin: 0 0.4rem;">/</span> 
+        <a href="/shop">Catalog</a> <span style="margin: 0 0.4rem;">/</span> 
+        <span id="breadcrumb-title" style="color: var(--text-primary); font-weight: 500;">Artifact</span>
+      </nav>
+
+      <!-- Main Product Details Container -->
+      <div id="product-detail-container">
+        <!-- Rendered by product-details.js -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem;">
+          <div class="skeleton" style="height: 520px; border-radius: var(--radius-md);"></div>
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <div class="skeleton" style="height: 30px; width: 40%;"></div>
+            <div class="skeleton" style="height: 48px; width: 85%;"></div>
+            <div class="skeleton" style="height: 36px; width: 30%;"></div>
+            <div class="skeleton" style="height: 120px; width: 100%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reviews Section -->
+      <section style="margin-top: 5rem; border-top: 1px solid var(--border-subtle); padding-top: 4rem;">
+        <div style="display: grid; grid-template-columns: 360px 1fr; gap: 3.5rem; align-items: start;">
+          
+          <!-- Rating Summary & Write Review Form -->
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 2rem;">
+            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem;">Client Impressions</h3>
+            <div style="display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 1.5rem;">
+              <span id="reviews-summary-score" style="font-size: 2.5rem; font-weight: 700; color: var(--accent);">0.0</span>
+              <span style="font-size: 0.9rem; color: var(--text-muted);">out of 5.0 (<span id="reviews-summary-count">0</span> reviews)</span>
+            </div>
+
+            <!-- Form -->
+            <form id="review-form" style="display: flex; flex-direction: column; gap: 1rem; border-top: 1px solid var(--border-subtle); padding-top: 1.5rem;">
+              <h4 style="font-size: 0.95rem; font-weight: 600;">Record Your Assessment</h4>
+              
+              <div>
+                <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.3rem;">Score (1 to 5 Stars)</label>
+                <select id="review-rating" style="width: 100%; border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 0.5rem;" required>
+                  <option value="5">5 Stars — Exceptional Masterpiece</option>
+                  <option value="4">4 Stars — Highly Commendable</option>
+                  <option value="3">3 Stars — Satisfactory</option>
+                  <option value="2">2 Stars — Sub-par Execution</option>
+                  <option value="1">1 Star — Unacceptable</option>
+                </select>
+              </div>
+
+              <div>
+                <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.3rem;">Review Headline</label>
+                <input type="text" id="review-title" placeholder="Summarize your experience..." style="width: 100%; border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 0.5rem; font-size: 0.85rem;" />
+              </div>
+
+              <div>
+                <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.3rem;">Detailed Thoughts</label>
+                <textarea id="review-comment" rows="3" placeholder="Describe the material quality, weight, finish..." style="width: 100%; border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 0.5rem; font-size: 0.85rem;" required></textarea>
+              </div>
+
+              <button type="submit" id="review-submit-btn" class="btn btn-primary btn-sm">Submit Review</button>
+              <div id="review-status-msg" style="font-size: 0.8rem; margin-top: 0.25rem;"></div>
+            </form>
+          </div>
+
+          <!-- Existing Reviews List -->
+          <div>
+            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 1.5rem;">Verified Feedback</h3>
+            <div id="reviews-list" style="display: flex; flex-direction: column; gap: 1.25rem;">
+              <span style="color: var(--text-muted);">Loading reviews...</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Related Products Section -->
+      <section style="margin-top: 5rem; border-top: 1px solid var(--border-subtle); padding-top: 4rem;">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="subheading-label">Synergy</span>
+            <h2 class="heading-section">Complementary Artifacts</h2>
+          </div>
+          <a href="/shop" class="section-link">Explore Archive &rarr;</a>
+        </div>
+        <div class="product-grid" id="related-products-grid" style="grid-template-columns: repeat(4, 1fr);">
+          <!-- Populated by product-details.js -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Maison &amp; Co.</h3>
+          <p style="font-size: 0.925rem; line-height: 1.6; max-width: 320px;">
+            An independent purveyor of modern utilitarian artifacts, architectural homeware, and durable lifestyle objects.
+          </p>
+          <div style="margin-top: 1.5rem; font-size: 0.825rem; color: #7B7872;">
+            Payment: Strictly Cash on Delivery (COD) across Pakistan.
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Departments</h4>
+          <ul>
+            <li><a href="/shop?category=living-interior">Living &amp; Interior</a></li>
+            <li><a href="/shop?category=analog-timepieces">Analog Timepieces</a></li>
+            <li><a href="/shop?category=leather-goods">Leathercraft</a></li>
+            <li><a href="/shop?category=desk-objects">Desk Artifacts</a></li>
+            <li><a href="/shop?category=ceramic-arts">Ceramic Studio</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Client Services</h4>
+          <ul>
+            <li><a href="/account/orders">Track Acquisition</a></li>
+            <li><a href="/cart">Shopping Bag</a></li>
+            <li><a href="/wishlist">Saved Wishlist</a></li>
+            <li><a href="/about">About Our Atelier</a></li>
+            <li><a href="/contact">Inquiries &amp; Studio</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Governance</h4>
+          <ul>
+            <li><a href="/privacy-policy">Privacy Protocol</a></li>
+            <li><a href="/terms-and-conditions">Terms of Service</a></li>
+            <li><a href="/login">Customer Sign In</a></li>
+            <li><a href="/register">Create Account</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Maison &amp; Co. All rights reserved. Full-Stack E-Commerce MVP.</span>
+        <span>Built with Node.js, Express, MySQL 8.0 &amp; Vanilla ES6+.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/product-details.js"></script>
+</body>
+</html>
+

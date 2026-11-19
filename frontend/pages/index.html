@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maison &amp; Co. — Architectural Homeware &amp; Minimalist Artifacts</title>
+  
+  <!-- Typography Fonts (UI UX Pro Max Typography System) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/animations.css" />
+  <link rel="stylesheet" href="/assets/css/responsive.css" />
+</head>
+<body>
+
+  <!-- Top Announcement Strip -->
+  <div class="announcement-bar">
+    <span>COMPLIMENTARY COURIER TRANSIT ACROSS PAKISTAN ON ORDERS OVER RS. 3,500 &bull; PURE CASH ON DELIVERY (COD)</span>
+  </div>
+
+  <!-- Main Sticky Header (Liquid Glass) -->
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-inner">
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-nav-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <!-- Brand Identity -->
+        <a href="/" class="site-logo">
+          Maison <span>&amp;</span> Co.
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav aria-label="Main Navigation">
+          <ul class="desktop-nav">
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="/shop">Catalog</a></li>
+            <li><a href="/categories">Departments</a></li>
+            <li><a href="/about">Atelier</a></li>
+            <li><a href="/contact">Inquiries</a></li>
+          </ul>
+        </nav>
+
+        <!-- Header Action Controls -->
+        <div class="header-actions">
+          
+          <!-- Search Form -->
+          <form class="header-search header-search-form" role="search">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="search" placeholder="Search archive..." aria-label="Search catalog" />
+          </form>
+
+          <!-- Wishlist -->
+          <a href="/wishlist" class="icon-btn" id="nav-wishlist-link" title="Wishlist" aria-label="Wishlist">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            <span class="cart-badge" id="wishlist-count-badge" style="display:none;">0</span>
+          </a>
+
+          <!-- Customer Account / Auth Link -->
+          <a href="/login" class="icon-btn" id="nav-account-link" title="Customer Account" aria-label="Account">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </a>
+          <span id="nav-user-name" style="font-size:0.85rem; font-weight:600; display:none; max-width:90px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"></span>
+
+          <!-- Shopping Cart Link -->
+          <a href="/cart" class="icon-btn" id="nav-cart-link" title="Shopping Bag" aria-label="Shopping Bag">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="cart-badge" id="cart-count-badge" style="display:none;">0</span>
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop"></div>
+    <div class="mobile-drawer-content">
+      <div class="mobile-drawer-header">
+        <span class="site-logo" style="font-size: 1.25rem;">Maison <span>&amp;</span> Co.</span>
+        <button id="mobile-drawer-close" aria-label="Close menu" style="padding: 0.5rem; color: var(--text-muted); font-size: 1.5rem;">&times;</button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Catalog</a></li>
+        <li><a href="/categories">Departments</a></li>
+        <li><a href="/wishlist">Saved Artifacts</a></li>
+        <li><a href="/cart">Shopping Bag</a></li>
+        <li><a href="/account" id="mobile-nav-account">My Account</a></li>
+        <li><a href="/about">Our Atelier</a></li>
+        <li><a href="/contact">Inquiries</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero Section: Expansive Architectural Editorial -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content reveal-item">
+            <span class="subheading-label">ARCHIVE 2026 // VOL. IV</span>
+            <h1 class="heading-display">Objects Crafted with Purpose &amp; <em>Permanence</em>.</h1>
+            <p class="hero-description">
+              A curated archive of architectural homeware, precision horology, and minimalist leather goods crafted for contemplative, enduring spaces.
+            </p>
+            <div class="hero-cta-group">
+              <a href="/shop" class="btn btn-primary">Discover Archive</a>
+              <a href="/categories" class="btn-editorial-link">Explore Disciplines &rarr;</a>
+            </div>
+          </div>
+          <div class="hero-image-wrapper reveal-item">
+            <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=1400&q=85" alt="Architectural interior curation" />
+            <div class="hero-image-caption-badge">VOL. IV &bull; CURATED ARCHIVE / PAKISTAN</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Curated Departments Gallery (Asymmetric Editorial Layout) -->
+    <section style="padding: 3rem 0 5rem;">
+      <div class="container">
+        <div class="section-header reveal-item">
+          <div class="section-title-wrap">
+            <span class="subheading-label">DISCIPLINES // 01</span>
+            <h2 class="heading-section">Curated Departments</h2>
+          </div>
+          <a href="/categories" class="section-link">View All Disciplines &rarr;</a>
+        </div>
+
+        <div class="category-editorial-grid">
+          <!-- Featured Department: Living & Interior -->
+          <a href="/shop?category=living-interior" class="category-editorial-card reveal-item">
+            <div class="category-editorial-img-wrap">
+              <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1000&q=85" alt="Living & Interior" loading="lazy" />
+            </div>
+            <div class="category-editorial-body">
+              <span class="category-editorial-tag">Department 01</span>
+              <h3 class="category-editorial-title">Living &amp; Interior <span class="arrow">&rarr;</span></h3>
+              <p class="category-editorial-desc">Architectural lighting, hand-thrown vessels, and cast brass homeware.</p>
+            </div>
+          </a>
+
+          <!-- Department: Analog Horology -->
+          <a href="/shop?category=analog-timepieces" class="category-editorial-card reveal-item">
+            <div class="category-editorial-img-wrap">
+              <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800&q=85" alt="Analog Horology" loading="lazy" />
+            </div>
+            <div class="category-editorial-body">
+              <span class="category-editorial-tag">Department 02</span>
+              <h3 class="category-editorial-title">Analog Horology <span class="arrow">&rarr;</span></h3>
+              <p class="category-editorial-desc">Mechanical chronographs and sapphire crystal timepieces.</p>
+            </div>
+          </a>
+
+          <!-- Department: Leathercraft -->
+          <a href="/shop?category=leather-goods" class="category-editorial-card reveal-item">
+            <div class="category-editorial-img-wrap">
+              <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=85" alt="Leathercraft" loading="lazy" />
+            </div>
+            <div class="category-editorial-body">
+              <span class="category-editorial-tag">Department 03</span>
+              <h3 class="category-editorial-title">Leathercraft <span class="arrow">&rarr;</span></h3>
+              <p class="category-editorial-desc">Vegetable-tanned weekender duffels and folio accessories.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Works: Frameless Editorial Cards with Secondary Image Reveal -->
+    <section style="padding: 2rem 0 6rem;">
+      <div class="container">
+        <div class="section-header reveal-item">
+          <div class="section-title-wrap">
+            <span class="subheading-label">SELECTION // 02</span>
+            <h2 class="heading-section">Featured Works</h2>
+          </div>
+          <a href="/shop" class="section-link">View Full Archive &rarr;</a>
+        </div>
+
+        <div class="product-grid" id="home-featured-grid" aria-busy="true">
+          <!-- Accessible Skeleton Loaders (Hydrated with real MySQL records) -->
+          <div class="skeleton-card">
+            <div class="skeleton-card-img skeleton-shimmer"></div>
+            <div class="skeleton-card-body">
+              <div class="skeleton-line skeleton-shimmer" style="width: 35%;"></div>
+              <div class="skeleton-line skeleton-shimmer" style="width: 80%; height: 16px;"></div>
+              <div class="skeleton-line skeleton-shimmer" style="width: 45%;"></div>
+            </div>
+          </div>
+          <div class="skeleton-card">
+            <div class="skeleton-card-img skeleton-shimmer"></div>
+            <div class="skeleton-card-body">
+              <div class="skeleton-line skeleton-shimmer" style="width: 35%;"></div>
+              <div class="skeleton-line skeleton-shimmer" style="width: 75%; height: 16px;"></div>
+              <div class="skeleton-line skeleton-shimmer" style="width: 50%;"></div>
+            </div>
+          </div>
+          <div class="skeleton-card">
+            <div class="skeleton-card-img skeleton-shimmer"></div>
+            <div class="skeleton-card-body">
+              <div class="skeleton-line skeleton-shimmer" style="width: 40%;"></div>
+              <div class="skeleton-line skeleton-shimmer" style="width: 85%; height: 16px;"></div>
+              <div class="skeleton-line skeleton-shimmer" style="width: 40%;"></div>
+            </div>
+          </div>
+          <div class="skeleton-card">
+            <div class="skeleton-card-img skeleton-shimmer"></div>
+            <div class="skeleton-card-body">
+              <div class="skeleton-line skeleton-shimmer" style="width: 30%;"></div>
+              <div class="skeleton-line skeleton-shimmer" style="width: 70%; height: 16px;"></div>
+              <div class="skeleton-line skeleton-shimmer" style="width: 45%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editorial Storytelling / Atelier Manifesto Section -->
+    <section class="atelier-manifesto-section">
+      <div class="container">
+        <div class="manifesto-grid">
+          <div class="manifesto-quote-wrap reveal-item">
+            <span class="subheading-label">THE PHILOSOPHY // 03</span>
+            <blockquote class="manifesto-quote">
+              &ldquo;In an era of disposable novelty, we curate objects that gather patina rather than obsolescence. Each artifact is an homage to raw materials, quiet geometry, and the art of unhurried living.&rdquo;
+            </blockquote>
+            <div class="manifesto-attribution">
+              Atelier Maison Journal &bull; Autumn Archive
+            </div>
+          </div>
+
+          <div class="manifesto-materials-list reveal-item">
+            <div class="manifesto-material-item">
+              <span class="manifesto-material-num">01</span>
+              <div>
+                <h4 class="manifesto-material-title">Full-Grain Horween &amp; Tuscan Hide</h4>
+                <p class="manifesto-material-desc">Vegetable-tanned leathers that deepen in character and texture with every passing season.</p>
+              </div>
+            </div>
+
+            <div class="manifesto-material-item">
+              <span class="manifesto-material-num">02</span>
+              <div>
+                <h4 class="manifesto-material-title">Architectural Spun Brass &amp; Opaline Glass</h4>
+                <p class="manifesto-material-desc">Solid unlacquered alloys engineered with heavy mechanical balance and soft luminous diffusion.</p>
+              </div>
+            </div>
+
+            <div class="manifesto-material-item">
+              <span class="manifesto-material-num">03</span>
+              <div>
+                <h4 class="manifesto-material-title">High-Fired Grogged Clay &amp; Volcanic Glazes</h4>
+                <p class="manifesto-material-desc">Hand-thrown studio stoneware retaining the authentic tactile nuance of natural mineral kiln fires.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Value Propositions Strip — Numbered Minimalist Pillars -->
+    <section class="features-strip">
+      <div class="container">
+        <div class="features-grid">
+          <div class="feature-pillar reveal-item">
+            <span class="feature-pillar-num">01 / DISPATCH</span>
+            <h4 class="feature-pillar-title">Complimentary Transit</h4>
+            <p class="feature-pillar-desc">Insured courier dispatch across Pakistan on all catalog acquisitions over Rs. 3,500.</p>
+          </div>
+
+          <div class="feature-pillar-num-wrap feature-pillar reveal-item">
+            <span class="feature-pillar-num">02 / SETTLEMENT</span>
+            <h4 class="feature-pillar-title">Pure Cash on Delivery</h4>
+            <p class="feature-pillar-desc">Inspect your parcel at doorstep delivery before physical cash remittance. Pure peace of mind.</p>
+          </div>
+
+          <div class="feature-pillar-num-wrap feature-pillar reveal-item">
+            <span class="feature-pillar-num">03 / INTEGRITY</span>
+            <h4 class="feature-pillar-title">Verified Atelier Provenance</h4>
+            <p class="feature-pillar-desc">Each object is individual serialized and authenticated by our studio before transit authorization.</p>
+          </div>
+
+          <div class="feature-pillar-num-wrap feature-pillar reveal-item">
+            <span class="feature-pillar-num">04 / PRIVILEGE</span>
+            <h4 class="feature-pillar-title">14-Day Archive Privilege</h4>
+            <p class="feature-pillar-desc">Enjoy full return privileges on all catalog artifacts in original presentation packaging.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section: Architectural Dark Volume -->
+    <section class="newsletter-section-wrap">
+      <div class="container">
+        <div class="newsletter-editorial-box reveal-item">
+          <div>
+            <span class="subheading-label">THE GAZETTE // 04</span>
+            <h2 class="newsletter-editorial-title">Receive Private Atelier Dispatches</h2>
+            <p class="newsletter-editorial-desc">
+              Private exhibition previews, horological archives, and an exclusive Rs. 500 courtesy privilege towards your inaugural acquisition.
+            </p>
+          </div>
+
+          <div>
+            <form class="newsletter-minimal-form" id="newsletter-form">
+              <div class="newsletter-input-group">
+                <input type="email" id="nl-email" placeholder="Enter your email address" required aria-label="Email address" />
+                <button type="submit" id="nl-submit-btn">Subscribe &rarr;</button>
+              </div>
+              <div class="newsletter-subtext">Dispatches released quarterly. Never marketed or shared.</div>
+              <div id="nl-message" style="font-size: 0.85rem; font-weight: 500;"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer (Architectural Editorial) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Maison &amp; Co.</h3>
+          <p>
+            An independent purveyor of modern utilitarian artifacts, architectural homeware, and durable lifestyle objects crafted for permanent living.
+          </p>
+          <div style="margin-top: 1.5rem; font-size: 0.8rem; color: #787570;">
+            Settlement: Strictly Cash on Delivery (COD) across Pakistan.
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Departments</h4>
+          <ul>
+            <li><a href="/shop?category=living-interior">Living &amp; Interior</a></li>
+            <li><a href="/shop?category=analog-timepieces">Analog Horology</a></li>
+            <li><a href="/shop?category=leather-goods">Leathercraft</a></li>
+            <li><a href="/shop?category=ceramics-tableware">Ceramics &amp; Tableware</a></li>
+            <li><a href="/shop?category=architectural-lighting">Architectural Lighting</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Client Services</h4>
+          <ul>
+            <li><a href="/account/orders">Track Acquisition</a></li>
+            <li><a href="/cart">Shopping Bag</a></li>
+            <li><a href="/wishlist">Saved Wishlist</a></li>
+            <li><a href="/about">About Our Atelier</a></li>
+            <li><a href="/contact">Inquiries &amp; Studio</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Governance</h4>
+          <ul>
+            <li><a href="/privacy-policy">Privacy Protocol</a></li>
+            <li><a href="/terms-and-conditions">Terms of Service</a></li>
+            <li><a href="/login">Customer Sign In</a></li>
+            <li><a href="/register">Create Account</a></li>
+            <li><a href="/admin/login" class="footer-admin-link">Atelier Management &rarr;</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Maison &amp; Co. All rights reserved. Curated Architectural Artifacts.</span>
+        <span>PKR (₨) &bull; Nationwide Courier Delivery</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/animations.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script>
+    // Quick Add to Cart & Wishlist Handlers for Homepage
+    async function handleQuickAddToCart(productId, btn) {
+      if (!window.api.isAuthenticated()) {
+        showToast('Sign In Required', 'Please log in to add items to your shopping bag.', 'info');
+        setTimeout(() => {
+          window.location.href = `/login?redirect=${encodeURIComponent(window.location.pathname)}`;
+        }, 1200);
+        return;
+      }
+
+      const orig = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = `<span class="spinner"></span> Adding...`;
+
+      try {
+        const res = await window.api.post('/cart', { productId: parseInt(productId, 10), quantity: 1 });
+        if (res.success) {
+          showToast('Added to Cart', 'Item added to your shopping bag.', 'success');
+          window.dispatchEvent(new CustomEvent('cart-updated'));
+          const badge = document.getElementById('cart-count-badge');
+          if (badge && window.MotionManager) {
+            window.MotionManager.popBadge(badge);
+          }
+        }
+      } catch (err) {
+        showToast('Cart Error', err.message, 'error');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = orig;
+      }
+    }
+
+    async function handleQuickAddToWishlist(productId, btn) {
+      if (!window.api.isAuthenticated()) {
+        showToast('Sign In Required', 'Please log in to save items to your wishlist.', 'info');
+        setTimeout(() => {
+          window.location.href = `/login?redirect=${encodeURIComponent(window.location.pathname)}`;
+        }, 1200);
+        return;
+      }
+
+      try {
+        const res = await window.api.post('/wishlist', { productId: parseInt(productId, 10) });
+        if (res.success) {
+          showToast('Saved to Wishlist', 'Artifact saved to your wishlist.', 'success');
+          window.dispatchEvent(new CustomEvent('wishlist-updated'));
+          btn.style.color = 'var(--accent)';
+          if (window.MotionManager) {
+            window.MotionManager.heartBeat(btn);
+          }
+        }
+      } catch (err) {
+        showToast('Wishlist Error', err.message, 'error');
+      }
+    }
+
+    function attachCardListeners(container) {
+      container.querySelectorAll('.product-card-quick-add').forEach(btn => {
+        btn.onclick = (e) => {
+          e.preventDefault();
+          handleQuickAddToCart(btn.getAttribute('data-product-id'), btn);
+        };
+      });
+
+      container.querySelectorAll('.product-card-wishlist-btn').forEach(btn => {
+        btn.onclick = (e) => {
+          e.preventDefault();
+          handleQuickAddToWishlist(btn.getAttribute('data-product-id'), btn);
+        };
+      });
+    }
+
+    // Dynamic Live Load & Hydration with Secondary Image Hover Reveal
+    document.addEventListener('DOMContentLoaded', async () => {
+      const grid = document.getElementById('home-featured-grid');
+      if (!grid) return;
+
+      try {
+        const res = await window.api.get('/products', { limit: 8, sort: 'featured' });
+        if (res.success && res.data && res.data.length > 0) {
+          grid.setAttribute('aria-busy', 'false');
+          grid.innerHTML = res.data.map(prod => {
+            const primaryImg = prod.primary_image || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80';
+            const secondaryImg = prod.secondary_image;
+            const price = parseFloat(prod.price).toLocaleString('en-US', { minimumFractionDigits: 2 });
+            const comparePrice = prod.compare_at_price 
+              ? `<span class="price-compare">Rs. ${parseFloat(prod.compare_at_price).toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>` 
+              : '';
+            const isOutOfStock = prod.stock_quantity <= 0;
+
+            return `
+              <article class="product-card reveal-item">
+                <div class="product-card-img-wrap">
+                  <a href="/product/${escapeHTML(prod.slug)}" aria-label="${escapeHTML(prod.name)}">
+                    <img class="product-card-img-primary" src="${escapeHTML(primaryImg)}" alt="${escapeHTML(prod.name)}" loading="lazy" />
+                    ${secondaryImg ? `<img class="product-card-img-secondary" src="${escapeHTML(secondaryImg)}" alt="${escapeHTML(prod.name)} angle" loading="lazy" />` : ''}
+                  </a>
+                  
+                  ${prod.discount_percent > 0 ? `<div class="product-badge-stack"><span class="badge badge-discount">-${prod.discount_percent}%</span></div>` : ''}
+                  
+                  <button class="product-card-wishlist-btn" data-product-id="${prod.id}" title="Save to Wishlist" aria-label="Save to Wishlist">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                  </button>
+
+                  <button class="product-card-quick-add" data-product-id="${prod.id}" ${isOutOfStock ? 'disabled' : ''}>
+                    ${isOutOfStock ? 'Sold Out' : 'Quick Add +'}
+                  </button>
+                </div>
+                
+                <div class="product-card-body">
+                  <div class="product-card-category">${escapeHTML(prod.category_name || 'Archive')}</div>
+                  <h4 class="product-card-title"><a href="/product/${escapeHTML(prod.slug)}">${escapeHTML(prod.name)}</a></h4>
+                  <div class="product-card-price-row">
+                    <span class="price-current">Rs. ${price}</span>
+                    ${comparePrice}
+                  </div>
+                </div>
+              </article>
+            `;
+          }).join('');
+
+          attachCardListeners(grid);
+          if (window.MotionManager) {
+            window.MotionManager.initScrollReveal(grid);
+          }
+        }
+      } catch (err) {
+        console.warn('Live hydration fallback retained:', err);
+      }
+    });
+  </script>
+</body>
+</html>

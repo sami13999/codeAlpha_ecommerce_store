@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Products | Store Admin</title>
+  <link rel="stylesheet" href="/admin/assets/css/admin-main.css">
+  <link rel="stylesheet" href="/admin/assets/css/admin-layout.css">
+  <link rel="stylesheet" href="/admin/assets/css/admin-components.css">
+  <link rel="stylesheet" href="/admin/assets/css/admin-responsive.css">
+</head>
+<body>
+  <div class="admin-wrapper">
+    <div class="admin-sidebar-backdrop" id="sidebar-backdrop"></div>
+
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <a href="/admin/dashboard" class="admin-brand">
+          <div class="admin-brand-icon">🛍️</div>
+          <span class="admin-brand-text">Store Admin</span>
+        </a>
+      </div>
+      <div class="admin-sidebar-body">
+        <div class="admin-nav-group-title">Main Navigation</div>
+        <ul class="admin-nav-list" id="admin-sidebar-nav"></ul>
+      </div>
+      <div class="admin-sidebar-footer">
+        <a href="/" target="_blank" class="admin-sidebar-link">
+          <span>🏪</span> View Customer Store
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="admin-icon-btn mobile-menu-toggle" id="mobile-sidebar-toggle" style="display:none;">☰</button>
+          <div class="topbar-breadcrumbs">
+            <a href="/admin/dashboard" class="breadcrumb-item">Admin</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Products</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <a href="/" target="_blank" class="admin-btn admin-btn-sm admin-btn-outline">Storefront ↗</a>
+          <div class="admin-user-menu">
+            <div class="admin-user-avatar" id="topbar-admin-avatar">AD</div>
+            <div class="admin-user-info">
+              <span class="admin-user-name" id="topbar-admin-name">Admin User</span>
+            </div>
+            <button class="admin-btn admin-btn-sm admin-btn-ghost" id="topbar-logout-btn">🚪 Sign Out</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="admin-content">
+        <div class="admin-page-header">
+          <div>
+            <h1 class="admin-page-title">Products Management</h1>
+            <p class="admin-page-subtitle">Create, update, monitor inventory, and organize your catalog</p>
+          </div>
+          <div class="admin-header-actions">
+            <a href="/admin/products/add" class="admin-btn admin-btn-primary">
+              <span>+ Add New Product</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="admin-filter-bar">
+          <div class="admin-filter-group">
+            <input type="text" id="filter-search" class="admin-input admin-search-input" placeholder="Search by title, SKU, or brand...">
+            <select id="filter-category" class="admin-select" style="min-width: 170px;">
+              <option value="">All Categories</option>
+            </select>
+            <select id="filter-stock" class="admin-select" style="min-width: 150px;">
+              <option value="">All Stock Levels</option>
+              <option value="in_stock">In Stock</option>
+              <option value="low_stock">Low Stock</option>
+              <option value="out_of_stock">Out of Stock</option>
+            </select>
+            <select id="filter-status" class="admin-select" style="min-width: 130px;">
+              <option value="">All Statuses</option>
+              <option value="1">Active Only</option>
+              <option value="0">Inactive</option>
+            </select>
+          </div>
+          <div>
+            <button class="admin-btn admin-btn-sm admin-btn-outline" id="filter-reset-btn">Reset Filters</button>
+          </div>
+        </div>
+
+        <!-- Products Table Card -->
+        <div class="admin-card admin-table-card">
+          <div class="admin-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th style="width: 60px;">Image</th>
+                  <th>Product Details</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Inventory</th>
+                  <th>Status</th>
+                  <th style="text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="products-tbody">
+                <tr>
+                  <td colspan="7" style="text-align: center; padding: 40px;">
+                    <div class="admin-spinner"></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div id="products-pagination-container"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="admin-toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="/admin/assets/js/admin-api.js"></script>
+  <script src="/admin/assets/js/components/notification.js"></script>
+  <script src="/admin/assets/js/components/confirmation-dialog.js"></script>
+  <script src="/admin/assets/js/components/sidebar.js"></script>
+  <script src="/admin/assets/js/components/topbar.js"></script>
+  <script src="/admin/assets/js/components/data-table.js"></script>
+  <script src="/admin/assets/js/pages/products-page.js"></script>
+</body>
+</html>

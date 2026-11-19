@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In — Maison &amp; Co.</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/responsive.css" />
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    <span>Complimentary courier transit across Pakistan on orders over Rs. 3,500 • Pure Cash on Delivery (COD)</span>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="site-logo">
+          Maison <span>&amp;</span> Co.
+        </a>
+
+        <nav>
+          <ul class="desktop-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/shop">Catalog</a></li>
+            <li><a href="/categories">Departments</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a href="/cart" class="icon-btn" id="nav-cart-link" title="Shopping Bag">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="cart-badge" id="cart-count-badge" style="display:none;">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 4rem 0 6rem;">
+    <div class="container" style="max-width: 480px;">
+      
+      <!-- Auth Card -->
+      <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 3rem 2.5rem; box-shadow: var(--shadow-sm);">
+        
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <span class="subheading-label">Client Access</span>
+          <h1 class="heading-section" style="font-size: 2rem; margin-top: 0.25rem;">Sign In to Maison</h1>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">
+            Access your orders, saved wishlist, and address dossier.
+          </p>
+        </div>
+
+        <!-- Demo Account Pill -->
+        <div style="background: var(--bg-subtle); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 0.85rem 1rem; margin-bottom: 1.5rem; font-size: 0.825rem; display: flex; flex-direction: column; gap: 0.4rem;">
+          <div style="font-weight: 600; color: var(--accent);">Seed Customer Account:</div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <code>customer@example.com / Password123!</code>
+            <button type="button" id="fill-demo-btn" style="background: none; border: none; color: var(--accent); font-weight: 600; cursor: pointer; text-decoration: underline; font-size: 0.775rem;">Fill</button>
+          </div>
+        </div>
+
+        <div id="login-error-container"></div>
+
+        <form id="login-form" style="display: flex; flex-direction: column; gap: 1.25rem;">
+          <div>
+            <label style="font-size: 0.825rem; font-weight: 500; display: block; margin-bottom: 0.4rem;">Email Address</label>
+            <input type="email" id="login_email" placeholder="name@example.com" required style="width: 100%; border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 0.75rem 1rem; font-size: 0.925rem;" />
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+              <label style="font-size: 0.825rem; font-weight: 500;">Password</label>
+              <a href="/forgot-password" style="font-size: 0.8rem; color: var(--text-muted);">Forgot?</a>
+            </div>
+            <div style="position: relative; display: flex; align-items: center;">
+              <input type="password" id="login_password" placeholder="••••••••" required style="width: 100%; border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 0.75rem 2.5rem 0.75rem 1rem; font-size: 0.925rem;" />
+              <button type="button" class="toggle-password-btn" style="position: absolute; right: 0.75rem; background: none; border: none; color: var(--text-muted); cursor: pointer;" title="Show password">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" id="login-submit-btn" class="btn btn-primary btn-full btn-lg" style="margin-top: 0.5rem;">
+            Sign In
+          </button>
+        </form>
+
+        <div style="text-align: center; margin-top: 2rem; font-size: 0.875rem; color: var(--text-secondary); border-top: 1px solid var(--border-subtle); padding-top: 1.5rem;">
+          Don't have an account yet? <a href="/register" style="color: var(--accent); font-weight: 600;">Create One</a>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>&copy; 2026 Maison &amp; Co. All rights reserved.</span>
+        <span>Pure Cash on Delivery (COD).</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const fillBtn = document.getElementById('fill-demo-btn');
+      if (fillBtn) {
+        fillBtn.addEventListener('click', () => {
+          document.getElementById('login_email').value = 'customer@example.com';
+          document.getElementById('login_password').value = 'Password123!';
+        });
+      }
+    });
+  </script>
+</body>
+</html>
+

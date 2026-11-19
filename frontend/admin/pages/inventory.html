@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Management | Store Admin</title>
+  <link rel="stylesheet" href="/admin/assets/css/admin-main.css">
+  <link rel="stylesheet" href="/admin/assets/css/admin-layout.css">
+  <link rel="stylesheet" href="/admin/assets/css/admin-components.css">
+  <link rel="stylesheet" href="/admin/assets/css/admin-responsive.css">
+  <style>
+    .admin-tab-nav {
+      display: flex;
+      gap: var(--admin-space-2);
+      border-bottom: 1px solid var(--admin-border-subtle);
+      margin-bottom: var(--admin-space-6);
+    }
+    .admin-tab-btn {
+      background: none;
+      border: none;
+      padding: var(--admin-space-3) var(--admin-space-4);
+      color: var(--admin-text-secondary);
+      font-size: var(--admin-font-sm);
+      font-weight: 500;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all var(--admin-transition-fast);
+    }
+    .admin-tab-btn.active {
+      color: var(--admin-primary);
+      border-bottom-color: var(--admin-primary);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-wrapper">
+    <div class="admin-sidebar-backdrop" id="sidebar-backdrop"></div>
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <a href="/admin/dashboard" class="admin-brand">
+          <div class="admin-brand-icon">🛍️</div>
+          <span class="admin-brand-text">Store Admin</span>
+        </a>
+      </div>
+      <div class="admin-sidebar-body">
+        <div class="admin-nav-group-title">Main Navigation</div>
+        <ul class="admin-nav-list" id="admin-sidebar-nav"></ul>
+      </div>
+      <div class="admin-sidebar-footer">
+        <a href="/" target="_blank" class="admin-sidebar-link"><span>🏪</span> View Customer Store</a>
+      </div>
+    </aside>
+
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="admin-icon-btn mobile-menu-toggle" id="mobile-sidebar-toggle" style="display:none;">☰</button>
+          <div class="topbar-breadcrumbs">
+            <a href="/admin/dashboard" class="breadcrumb-item">Admin</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Inventory</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <a href="/" target="_blank" class="admin-btn admin-btn-sm admin-btn-outline">Storefront ↗</a>
+          <div class="admin-user-menu">
+            <div class="admin-user-avatar" id="topbar-admin-avatar">AD</div>
+            <div class="admin-user-info"><span class="admin-user-name" id="topbar-admin-name">Admin User</span></div>
+            <button class="admin-btn admin-btn-sm admin-btn-ghost" id="topbar-logout-btn">🚪 Sign Out</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="admin-content">
+        <div class="admin-page-header">
+          <div>
+            <h1 class="admin-page-title">Inventory & Stock Control</h1>
+            <p class="admin-page-subtitle">Track stock levels, record shipments, and inspect movement audit logs</p>
+          </div>
+          <div class="admin-header-actions">
+            <button type="button" class="admin-btn admin-btn-primary" id="open-adjust-modal-btn">
+              <span>+ Adjust / Restock Product</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tabs Navigation -->
+        <div class="admin-tab-nav">
+          <button class="admin-tab-btn active" id="tab-levels-btn">Current Inventory Levels</button>
+          <button class="admin-tab-btn" id="tab-movements-btn">Movement Audit Trail</button>
+        </div>
+
+        <!-- Tab 1: Current Levels View -->
+        <div id="tab-levels-pane">
+          <div class="admin-filter-bar">
+            <div class="admin-filter-group">
+              <input type="text" id="inv-search" class="admin-input admin-search-input" placeholder="Search product title or SKU...">
+              <select id="inv-filter-status" class="admin-select" style="min-width: 160px;">
+                <option value="">All Stock Levels</option>
+                <option value="low_stock">Low Stock & Out of Stock</option>
+                <option value="in_stock">Healthy (In Stock)</option>
+              </select>
+            </div>
+            <div>
+              <button class="admin-btn admin-btn-sm admin-btn-outline" id="inv-reset-btn">Reset</button>
+            </div>
+          </div>
+
+          <div class="admin-card admin-table-card">
+            <div class="admin-table-container">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th style="width: 50px;">Image</th>
+                    <th>Product & SKU</th>
+                    <th>Category</th>
+                    <th>Current Stock</th>
+                    <th>Low Threshold</th>
+                    <th>Health Status</th>
+                    <th style="text-align: right;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="inv-levels-tbody">
+                  <tr><td colspan="7" style="text-align: center; padding: 40px;"><div class="admin-spinner"></div></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="inv-pagination-container"></div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Movements View -->
+        <div id="tab-movements-pane" style="display: none;">
+          <div class="admin-card admin-table-card">
+            <div class="admin-table-container">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Timestamp</th>
+                    <th>Product</th>
+                    <th>Movement Type</th>
+                    <th>Quantity Change</th>
+                    <th>Reference</th>
+                    <th>Notes / Reason</th>
+                  </tr>
+                </thead>
+                <tbody id="inv-movements-tbody">
+                  <tr><td colspan="6" style="text-align: center; padding: 40px;"><div class="admin-spinner"></div></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="movements-pagination-container"></div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Adjust Stock Modal -->
+  <div class="admin-modal-backdrop" id="adjust-stock-modal">
+    <div class="admin-modal-dialog">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="adjust-modal-title">Inventory Adjustment</h3>
+        <button class="admin-modal-close" id="adjust-modal-close">&times;</button>
+      </div>
+      <form id="adjust-stock-form">
+        <div class="admin-modal-body">
+          <div class="admin-form-group">
+            <label class="admin-label" for="adjust-product-select">Select Product <span style="color: var(--admin-danger);">*</span></label>
+            <select id="adjust-product-select" class="admin-select" required>
+              <option value="">Select a product...</option>
+            </select>
+          </div>
+
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--admin-space-4);">
+            <div class="admin-form-group">
+              <label class="admin-label" for="adjust-type-select">Action Type <span style="color: var(--admin-danger);">*</span></label>
+              <select id="adjust-type-select" class="admin-select" required>
+                <option value="STOCK_IN">STOCK_IN (Restock / Received)</option>
+                <option value="STOCK_OUT">STOCK_OUT (Manual Deduction)</option>
+                <option value="ADJUSTMENT">ADJUSTMENT (Cycle Count)</option>
+              </select>
+            </div>
+
+            <div class="admin-form-group">
+              <label class="admin-label" for="adjust-quantity-input">Quantity Units <span style="color: var(--admin-danger);">*</span></label>
+              <input type="number" id="adjust-quantity-input" class="admin-input" min="1" value="10" required>
+            </div>
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-label" for="adjust-notes-input">Reason / Audit Note</label>
+            <textarea id="adjust-notes-input" class="admin-textarea" rows="2" placeholder="e.g. Shipment received PO-4482 or Damaged goods writeoff..."></textarea>
+          </div>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-btn admin-btn-outline" id="adjust-modal-cancel">Cancel</button>
+          <button type="submit" class="admin-btn admin-btn-primary" id="adjust-modal-submit">Apply Stock Adjustment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="admin-toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="/admin/assets/js/admin-api.js"></script>
+  <script src="/admin/assets/js/components/notification.js"></script>
+  <script src="/admin/assets/js/components/confirmation-dialog.js"></script>
+  <script src="/admin/assets/js/components/sidebar.js"></script>
+  <script src="/admin/assets/js/components/topbar.js"></script>
+  <script src="/admin/assets/js/components/data-table.js"></script>
+  <script src="/admin/assets/js/pages/inventory-page.js"></script>
+</body>
+</html>

@@ -2,15 +2,19 @@
   "name": "maison-ecommerce-store",
   "version": "1.0.0",
   "description": "Enterprise-grade Full-Stack E-Commerce Application with Node.js, Express.js, and MySQL 8.0",
-  "main": "server/server.js",
+  "main": "backend/src/server.js",
   "scripts": {
-    "start": "node server/server.js",
-    "dev": "node server/server.js",
+    "start": "node backend/src/server.js",
+    "dev": "node backend/src/server.js",
     "test": "node tests/run-all-tests.js",
     "test:auth": "node tests/auth.test.js",
     "test:products": "node tests/products.test.js",
     "test:cart": "node tests/cart.test.js",
+    "test:wishlist": "node tests/wishlist.test.js",
+    "test:addresses": "node tests/addresses.test.js",
+    "test:coupons": "node tests/coupons.test.js",
     "test:orders": "node tests/orders.test.js",
+    "test:admin": "node tests/admin.test.js",
     "seed": "node scripts/seed.js"
   },
   "repository": {

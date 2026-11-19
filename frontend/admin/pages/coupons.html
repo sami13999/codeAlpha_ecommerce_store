@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Coupons | Store Admin</title>
+  <link rel="stylesheet" href="/admin/assets/css/admin-main.css">
+  <link rel="stylesheet" href="/admin/assets/css/admin-layout.css">
+  <link rel="stylesheet" href="/admin/assets/css/admin-components.css">
+  <link rel="stylesheet" href="/admin/assets/css/admin-responsive.css">
+</head>
+<body>
+  <div class="admin-wrapper">
+    <div class="admin-sidebar-backdrop" id="sidebar-backdrop"></div>
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <a href="/admin/dashboard" class="admin-brand">
+          <div class="admin-brand-icon">🛍️</div>
+          <span class="admin-brand-text">Store Admin</span>
+        </a>
+      </div>
+      <div class="admin-sidebar-body">
+        <div class="admin-nav-group-title">Main Navigation</div>
+        <ul class="admin-nav-list" id="admin-sidebar-nav"></ul>
+      </div>
+      <div class="admin-sidebar-footer">
+        <a href="/" target="_blank" class="admin-sidebar-link"><span>🏪</span> View Customer Store</a>
+      </div>
+    </aside>
+
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="admin-icon-btn mobile-menu-toggle" id="mobile-sidebar-toggle" style="display:none;">☰</button>
+          <div class="topbar-breadcrumbs">
+            <a href="/admin/dashboard" class="breadcrumb-item">Admin</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Coupons</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <a href="/" target="_blank" class="admin-btn admin-btn-sm admin-btn-outline">Storefront ↗</a>
+          <div class="admin-user-menu">
+            <div class="admin-user-avatar" id="topbar-admin-avatar">AD</div>
+            <div class="admin-user-info"><span class="admin-user-name" id="topbar-admin-name">Admin User</span></div>
+            <button class="admin-btn admin-btn-sm admin-btn-ghost" id="topbar-logout-btn">🚪 Sign Out</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="admin-content">
+        <div class="admin-page-header">
+          <div>
+            <h1 class="admin-page-title">Discount Coupons & Promotions</h1>
+            <p class="admin-page-subtitle">Configure promotional discount codes, validity windows, and usage caps</p>
+          </div>
+          <div class="admin-header-actions">
+            <button type="button" class="admin-btn admin-btn-primary" id="open-coupon-modal-btn">
+              <span>+ Create Coupon</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="admin-card admin-table-card">
+          <div class="admin-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Promo Code</th>
+                  <th>Discount</th>
+                  <th>Order Min</th>
+                  <th>Redemptions</th>
+                  <th>Valid Window</th>
+                  <th>Status</th>
+                  <th style="text-align: right;">Action</th>
+                </tr>
+              </thead>
+              <tbody id="coupons-tbody">
+                <tr><td colspan="7" style="text-align: center; padding: 40px;"><div class="admin-spinner"></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="coupons-pagination-container"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Coupon Modal -->
+  <div class="admin-modal-backdrop" id="coupon-modal">
+    <div class="admin-modal-dialog">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="coupon-modal-title">Create Discount Coupon</h3>
+        <button class="admin-modal-close" id="coupon-modal-close">&times;</button>
+      </div>
+      <form id="coupon-form">
+        <div class="admin-modal-body">
+          <input type="hidden" id="coupon-id">
+
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--admin-space-4);">
+            <div class="admin-form-group">
+              <label class="admin-label" for="coupon-code">Coupon Code <span style="color: var(--admin-danger);">*</span></label>
+              <input type="text" id="coupon-code" class="admin-input" placeholder="e.g. SUMMER25" style="text-transform: uppercase;" required>
+            </div>
+
+            <div class="admin-form-group">
+              <label class="admin-label" for="coupon-type">Discount Type <span style="color: var(--admin-danger);">*</span></label>
+              <select id="coupon-type" class="admin-select" required>
+                <option value="PERCENTAGE">PERCENTAGE (%)</option>
+                <option value="FIXED">FIXED AMOUNT ($)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--admin-space-4);">
+            <div class="admin-form-group">
+              <label class="admin-label" for="coupon-value">Discount Value <span style="color: var(--admin-danger);">*</span></label>
+              <input type="number" id="coupon-value" class="admin-input" step="0.01" min="0" placeholder="e.g. 15" required>
+            </div>
+
+            <div class="admin-form-group">
+              <label class="admin-label" for="coupon-min-order">Min Order Amount ($)</label>
+              <input type="number" id="coupon-min-order" class="admin-input" step="0.01" min="0" value="0">
+            </div>
+          </div>
+
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--admin-space-4);">
+            <div class="admin-form-group">
+              <label class="admin-label" for="coupon-max-discount">Max Discount Cap ($)</label>
+              <input type="number" id="coupon-max-discount" class="admin-input" step="0.01" min="0" placeholder="Optional">
+              <span class="admin-help-text">Useful for percentage discounts</span>
+            </div>
+
+            <div class="admin-form-group">
+              <label class="admin-label" for="coupon-max-uses">Total Usage Limit</label>
+              <input type="number" id="coupon-max-uses" class="admin-input" min="0" placeholder="Unlimited if empty">
+            </div>
+          </div>
+
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--admin-space-4);">
+            <div class="admin-form-group">
+              <label class="admin-label" for="coupon-start-date">Start Date</label>
+              <input type="date" id="coupon-start-date" class="admin-input">
+            </div>
+
+            <div class="admin-form-group">
+              <label class="admin-label" for="coupon-end-date">End / Expiry Date</label>
+              <input type="date" id="coupon-end-date" class="admin-input">
+            </div>
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-checkbox-label">
+              <input type="checkbox" id="coupon-active" checked>
+              <span>Coupon is Active</span>
+            </label>
+          </div>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-btn admin-btn-outline" id="coupon-modal-cancel">Cancel</button>
+          <button type="submit" class="admin-btn admin-btn-primary" id="coupon-modal-submit">Save Coupon</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="admin-toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="/admin/assets/js/admin-api.js"></script>
+  <script src="/admin/assets/js/components/notification.js"></script>
+  <script src="/admin/assets/js/components/confirmation-dialog.js"></script>
+  <script src="/admin/assets/js/components/sidebar.js"></script>
+  <script src="/admin/assets/js/components/topbar.js"></script>
+  <script src="/admin/assets/js/components/data-table.js"></script>
+  <script src="/admin/assets/js/pages/coupons-page.js"></script>
+</body>
+</html>

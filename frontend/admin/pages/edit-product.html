@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Product | Store Admin</title>
+  <link rel="stylesheet" href="/admin/assets/css/admin-main.css">
+  <link rel="stylesheet" href="/admin/assets/css/admin-layout.css">
+  <link rel="stylesheet" href="/admin/assets/css/admin-components.css">
+  <link rel="stylesheet" href="/admin/assets/css/admin-responsive.css">
+  <style>
+    .image-preview-item {
+      display: flex;
+      align-items: center;
+      gap: var(--admin-space-3);
+      padding: var(--admin-space-3);
+      background: var(--admin-bg-surface-elevated);
+      border: 1px solid var(--admin-border-subtle);
+      border-radius: var(--admin-radius-md);
+      margin-bottom: var(--admin-space-2);
+    }
+    .image-thumb-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--admin-radius-sm);
+      object-fit: cover;
+      background: var(--admin-bg-surface);
+      border: 1px solid var(--admin-border-light);
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-wrapper">
+    <div class="admin-sidebar-backdrop" id="sidebar-backdrop"></div>
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <a href="/admin/dashboard" class="admin-brand">
+          <div class="admin-brand-icon">🛍️</div>
+          <span class="admin-brand-text">Store Admin</span>
+        </a>
+      </div>
+      <div class="admin-sidebar-body">
+        <div class="admin-nav-group-title">Main Navigation</div>
+        <ul class="admin-nav-list" id="admin-sidebar-nav"></ul>
+      </div>
+      <div class="admin-sidebar-footer">
+        <a href="/" target="_blank" class="admin-sidebar-link"><span>🏪</span> View Customer Store</a>
+      </div>
+    </aside>
+
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="admin-icon-btn mobile-menu-toggle" id="mobile-sidebar-toggle" style="display:none;">☰</button>
+          <div class="topbar-breadcrumbs">
+            <a href="/admin/dashboard" class="breadcrumb-item">Admin</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="/admin/products" class="breadcrumb-item">Products</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current" id="form-mode-crumb">Edit Product</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <a href="/" target="_blank" class="admin-btn admin-btn-sm admin-btn-outline">Storefront ↗</a>
+          <div class="admin-user-menu">
+            <div class="admin-user-avatar" id="topbar-admin-avatar">AD</div>
+            <div class="admin-user-info"><span class="admin-user-name" id="topbar-admin-name">Admin User</span></div>
+            <button class="admin-btn admin-btn-sm admin-btn-ghost" id="topbar-logout-btn">🚪 Sign Out</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="admin-content">
+        <div class="admin-page-header">
+          <div>
+            <h1 class="admin-page-title" id="page-title">Edit Product</h1>
+            <p class="admin-page-subtitle">Update product details, pricing, media, and inventory thresholds</p>
+          </div>
+          <div class="admin-header-actions">
+            <a href="/admin/products" class="admin-btn admin-btn-outline">Back to Products</a>
+            <button type="button" class="admin-btn admin-btn-primary" id="save-product-top-btn">Save Changes</button>
+          </div>
+        </div>
+
+        <form id="product-form">
+          <div class="admin-detail-layout">
+            <!-- Left Main Column -->
+            <div style="display: flex; flex-direction: column; gap: var(--admin-space-6);">
+              <!-- Basic Information Card -->
+              <div class="admin-card">
+                <div class="admin-card-header">
+                  <div class="admin-card-title">General Information</div>
+                </div>
+                <div class="admin-card-body">
+                  <div class="admin-form-group">
+                    <label class="admin-label" for="product-title">Product Title <span style="color: var(--admin-danger);">*</span></label>
+                    <input type="text" id="product-title" class="admin-input" required>
+                  </div>
+
+                  <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--admin-space-4);">
+                    <div class="admin-form-group">
+                      <label class="admin-label" for="product-slug">Slug (URL friendly)</label>
+                      <input type="text" id="product-slug" class="admin-input">
+                    </div>
+
+                    <div class="admin-form-group">
+                      <label class="admin-label" for="product-sku">SKU</label>
+                      <input type="text" id="product-sku" class="admin-input">
+                    </div>
+                  </div>
+
+                  <div class="admin-form-group">
+                    <label class="admin-label" for="product-description">Description</label>
+                    <textarea id="product-description" class="admin-textarea" rows="5"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Media & Images Card -->
+              <div class="admin-card">
+                <div class="admin-card-header">
+                  <div class="admin-card-title">Product Images</div>
+                  <button type="button" class="admin-btn admin-btn-sm admin-btn-outline" id="add-image-url-btn">+ Add Image URL</button>
+                </div>
+                <div class="admin-card-body">
+                  <p class="admin-help-text" style="margin-bottom: var(--admin-space-3);">
+                    Provide image URLs. Mark one radio as the primary thumbnail.
+                  </p>
+                  <div id="image-inputs-container"></div>
+                </div>
+              </div>
+
+              <!-- Inventory & Stock Management -->
+              <div class="admin-card">
+                <div class="admin-card-header">
+                  <div class="admin-card-title">Inventory & Stock</div>
+                </div>
+                <div class="admin-card-body">
+                  <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--admin-space-4);">
+                    <div class="admin-form-group">
+                      <label class="admin-label" for="product-stock">Stock Quantity</label>
+                      <input type="number" id="product-stock" class="admin-input" min="0">
+                      <span class="admin-help-text" id="stock-help-text">For inventory adjustments with audit trail, use the Inventory module.</span>
+                    </div>
+
+                    <div class="admin-form-group">
+                      <label class="admin-label" for="product-low-threshold">Low Stock Threshold</label>
+                      <input type="number" id="product-low-threshold" class="admin-input" min="1" value="5">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Sidebar Column -->
+            <div style="display: flex; flex-direction: column; gap: var(--admin-space-6);">
+              <div class="admin-card">
+                <div class="admin-card-header"><div class="admin-card-title">Organization</div></div>
+                <div class="admin-card-body">
+                  <div class="admin-form-group">
+                    <label class="admin-label" for="product-category">Category <span style="color: var(--admin-danger);">*</span></label>
+                    <select id="product-category" class="admin-select" required></select>
+                  </div>
+
+                  <div class="admin-form-group">
+                    <label class="admin-label" for="product-brand">Brand</label>
+                    <input type="text" id="product-brand" class="admin-input">
+                  </div>
+
+                  <div style="margin-top: var(--admin-space-4); display: flex; flex-direction: column; gap: var(--admin-space-3);">
+                    <label class="admin-checkbox-label">
+                      <input type="checkbox" id="product-active" checked>
+                      <span>Active (Visible on Storefront)</span>
+                    </label>
+
+                    <label class="admin-checkbox-label">
+                      <input type="checkbox" id="product-featured">
+                      <span>Featured Product</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="admin-card">
+                <div class="admin-card-header"><div class="admin-card-title">Pricing</div></div>
+                <div class="admin-card-body">
+                  <div class="admin-form-group">
+                    <label class="admin-label" for="product-price">Selling Price ($) <span style="color: var(--admin-danger);">*</span></label>
+                    <input type="number" id="product-price" class="admin-input" step="0.01" min="0" required>
+                  </div>
+
+                  <div class="admin-form-group">
+                    <label class="admin-label" for="product-compare-price">Compare-at Price ($)</label>
+                    <input type="number" id="product-compare-price" class="admin-input" step="0.01" min="0">
+                  </div>
+
+                  <div class="admin-form-group">
+                    <label class="admin-label" for="product-cost-price">Cost per Item ($)</label>
+                    <input type="number" id="product-cost-price" class="admin-input" step="0.01" min="0">
+                  </div>
+                </div>
+              </div>
+
+              <div class="admin-card">
+                <div class="admin-card-body">
+                  <button type="submit" class="admin-btn admin-btn-primary admin-btn-block" id="save-product-submit-btn">
+                    Save Changes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </main>
+    </div>
+  </div>
+
+  <div class="admin-toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="/admin/assets/js/admin-api.js"></script>
+  <script src="/admin/assets/js/components/notification.js"></script>
+  <script src="/admin/assets/js/components/confirmation-dialog.js"></script>
+  <script src="/admin/assets/js/components/sidebar.js"></script>
+  <script src="/admin/assets/js/components/topbar.js"></script>
+  <script src="/admin/assets/js/pages/product-form-page.js"></script>
+</body>
+</html>

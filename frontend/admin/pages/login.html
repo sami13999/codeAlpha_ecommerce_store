@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Sign In | E-Commerce Store</title>
+  <link rel="stylesheet" href="/admin/assets/css/admin-main.css">
+  <link rel="stylesheet" href="/admin/assets/css/admin-components.css">
+  <link rel="stylesheet" href="/admin/assets/css/admin-responsive.css">
+  <style>
+    body {
+      background: radial-gradient(circle at 50% 20%, #1e293b 0%, #0f172a 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--admin-space-4);
+    }
+    .admin-login-card {
+      background: var(--admin-bg-surface);
+      border: 1px solid var(--admin-border-subtle);
+      border-radius: var(--admin-radius-xl);
+      box-shadow: var(--admin-shadow-2xl);
+      width: 100%;
+      max-width: 440px;
+      padding: var(--admin-space-8);
+      position: relative;
+      overflow: hidden;
+    }
+    .admin-login-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--admin-primary), #6366f1, #a855f7);
+    }
+    .admin-login-header {
+      text-align: center;
+      margin-bottom: var(--admin-space-6);
+    }
+    .admin-login-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      background: var(--admin-primary-light);
+      border: 1px solid rgba(79, 70, 229, 0.2);
+      border-radius: var(--admin-radius-lg);
+      font-size: 28px;
+      margin-bottom: var(--admin-space-4);
+    }
+    .admin-login-title {
+      font-size: var(--admin-font-2xl);
+      font-weight: 700;
+      color: var(--admin-text-primary);
+      margin-bottom: var(--admin-space-1);
+    }
+    .admin-login-subtitle {
+      font-size: var(--admin-font-sm);
+      color: var(--admin-text-secondary);
+    }
+    .demo-credentials-pill {
+      background: rgba(79, 70, 229, 0.08);
+      border: 1px dashed var(--admin-primary);
+      border-radius: var(--admin-radius-md);
+      padding: var(--admin-space-3) var(--admin-space-4);
+      margin-bottom: var(--admin-space-6);
+      font-size: var(--admin-font-xs);
+      color: var(--admin-text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .demo-credentials-pill code {
+      color: var(--admin-primary-hover);
+      font-weight: 600;
+      font-family: var(--admin-font-mono);
+    }
+    .storefront-link {
+      display: block;
+      text-align: center;
+      margin-top: var(--admin-space-6);
+      font-size: var(--admin-font-xs);
+      color: var(--admin-text-muted);
+      text-decoration: none;
+      transition: color var(--admin-transition-fast);
+    }
+    .storefront-link:hover {
+      color: var(--admin-primary);
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-login-card">
+    <div class="admin-login-header">
+      <div class="admin-login-logo">🛍️</div>
+      <h1 class="admin-login-title">Admin Console</h1>
+      <p class="admin-login-subtitle">Sign in to manage your e-commerce operations</p>
+    </div>
+
+    <div class="demo-credentials-pill">
+      <div>
+        <strong>Default Admin:</strong><br>
+        <code>admin@store.com</code> / <code>Password123!</code>
+      </div>
+      <button type="button" class="admin-btn admin-btn-sm admin-btn-outline" id="auto-fill-btn">Fill</button>
+    </div>
+
+    <div id="login-alert" class="admin-badge badge-danger" style="display: none; width: 100%; padding: 10px; margin-bottom: 16px; border-radius: 6px; font-size: 13px; text-align: center;"></div>
+
+    <form id="admin-login-form">
+      <div class="admin-form-group">
+        <label class="admin-label" for="admin-email">Email Address</label>
+        <input type="email" id="admin-email" class="admin-input" placeholder="admin@store.com" required autocomplete="email">
+      </div>
+
+      <div class="admin-form-group">
+        <label class="admin-label" for="admin-password">Password</label>
+        <div style="position: relative;">
+          <input type="password" id="admin-password" class="admin-input" placeholder="••••••••" required autocomplete="current-password">
+          <button type="button" id="toggle-pw-btn" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--admin-text-muted); font-size: 14px;">👁️</button>
+        </div>
+      </div>
+
+      <button type="submit" class="admin-btn admin-btn-primary admin-btn-block" id="login-submit-btn" style="margin-top: var(--admin-space-4);">
+        <span id="btn-text">Sign In to Dashboard</span>
+        <span id="btn-spinner" class="admin-spinner" style="display: none; margin-left: 8px;"></span>
+      </button>
+    </form>
+
+    <a href="/" class="storefront-link">← Return to Customer Storefront</a>
+  </div>
+
+  <div class="admin-toast-container"></div>
+
+  <script src="/admin/assets/js/admin-api.js"></script>
+  <script src="/admin/assets/js/components/notification.js"></script>
+  <script src="/admin/assets/js/pages/login-page.js"></script>
+</body>
+</html>

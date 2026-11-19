@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dossier | Store Admin</title>
+  <link rel="stylesheet" href="/admin/assets/css/admin-main.css">
+  <link rel="stylesheet" href="/admin/assets/css/admin-layout.css">
+  <link rel="stylesheet" href="/admin/assets/css/admin-components.css">
+  <link rel="stylesheet" href="/admin/assets/css/admin-responsive.css">
+</head>
+<body>
+  <div class="admin-wrapper">
+    <div class="admin-sidebar-backdrop" id="sidebar-backdrop"></div>
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <a href="/admin/dashboard" class="admin-brand">
+          <div class="admin-brand-icon">🛍️</div>
+          <span class="admin-brand-text">Store Admin</span>
+        </a>
+      </div>
+      <div class="admin-sidebar-body">
+        <div class="admin-nav-group-title">Main Navigation</div>
+        <ul class="admin-nav-list" id="admin-sidebar-nav"></ul>
+      </div>
+      <div class="admin-sidebar-footer">
+        <a href="/" target="_blank" class="admin-sidebar-link"><span>🏪</span> View Customer Store</a>
+      </div>
+    </aside>
+
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="admin-icon-btn mobile-menu-toggle" id="mobile-sidebar-toggle" style="display:none;">☰</button>
+          <div class="topbar-breadcrumbs">
+            <a href="/admin/dashboard" class="breadcrumb-item">Admin</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="/admin/customers" class="breadcrumb-item">Customers</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current" id="cust-crumb-name">Customer Dossier</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <a href="/" target="_blank" class="admin-btn admin-btn-sm admin-btn-outline">Storefront ↗</a>
+          <div class="admin-user-menu">
+            <div class="admin-user-avatar" id="topbar-admin-avatar">AD</div>
+            <div class="admin-user-info"><span class="admin-user-name" id="topbar-admin-name">Admin User</span></div>
+            <button class="admin-btn admin-btn-sm admin-btn-ghost" id="topbar-logout-btn">🚪 Sign Out</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="admin-content">
+        <div class="admin-page-header">
+          <div>
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 4px;">
+              <h1 class="admin-page-title" id="cust-name-header">Customer</h1>
+              <span class="admin-badge" id="cust-status-badge">ACTIVE</span>
+              <span class="admin-badge badge-neutral" id="cust-role-badge">CUSTOMER</span>
+            </div>
+            <p class="admin-page-subtitle" id="cust-joined-date">Customer since —</p>
+          </div>
+          <div class="admin-header-actions">
+            <a href="/admin/customers" class="admin-btn admin-btn-outline">&larr; Back to Directory</a>
+            <button type="button" class="admin-btn" id="btn-toggle-customer-status">Change Status</button>
+          </div>
+        </div>
+
+        <!-- Metric Stat Cards -->
+        <div class="admin-metrics-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: var(--admin-space-6);">
+          <div class="admin-metric-card">
+            <div class="admin-metric-label">Lifetime Spend</div>
+            <div class="admin-metric-value" id="metric-cust-spend">$0.00</div>
+          </div>
+          <div class="admin-metric-card">
+            <div class="admin-metric-label">Total Orders Placed</div>
+            <div class="admin-metric-value" id="metric-cust-orders">0</div>
+          </div>
+          <div class="admin-metric-card">
+            <div class="admin-metric-label">Average Order Value (AOV)</div>
+            <div class="admin-metric-value" id="metric-cust-aov">$0.00</div>
+          </div>
+        </div>
+
+        <div class="admin-detail-layout">
+          <!-- Main Left Column: Order History -->
+          <div style="display: flex; flex-direction: column; gap: var(--admin-space-6);">
+            <div class="admin-card">
+              <div class="admin-card-header">
+                <div class="admin-card-title">Order History</div>
+              </div>
+              <div class="admin-table-container">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Order #</th>
+                      <th>Date</th>
+                      <th>Total</th>
+                      <th>Payment</th>
+                      <th>Status</th>
+                      <th style="text-align: right;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cust-orders-tbody">
+                    <tr><td colspan="6" style="text-align: center; padding: 24px;"><div class="admin-spinner"></div></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Sidebar Column: Contact & Addresses -->
+          <div style="display: flex; flex-direction: column; gap: var(--admin-space-6);">
+            <div class="admin-card">
+              <div class="admin-card-header">
+                <div class="admin-card-title">Contact Information</div>
+              </div>
+              <div class="admin-card-body" id="cust-contact-box">
+                <div class="admin-spinner"></div>
+              </div>
+            </div>
+
+            <div class="admin-card">
+              <div class="admin-card-header">
+                <div class="admin-card-title">Saved Shipping Addresses</div>
+              </div>
+              <div class="admin-card-body" id="cust-addresses-box">
+                <div class="admin-spinner"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="admin-toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="/admin/assets/js/admin-api.js"></script>
+  <script src="/admin/assets/js/components/notification.js"></script>
+  <script src="/admin/assets/js/components/confirmation-dialog.js"></script>
+  <script src="/admin/assets/js/components/sidebar.js"></script>
+  <script src="/admin/assets/js/components/topbar.js"></script>
+  <script src="/admin/assets/js/components/data-table.js"></script>
+  <script src="/admin/assets/js/pages/customer-details-page.js"></script>
+</body>
+</html>

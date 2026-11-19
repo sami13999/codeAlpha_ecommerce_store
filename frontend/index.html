@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maison &amp; Co. — Architectural Homeware &amp; Minimalist Artifacts</title>
+  
+  <!-- Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/responsive.css" />
+</head>
+<body>
+
+  <!-- Top Announcement Strip -->
+  <div class="announcement-bar">
+    <span>Complimentary courier transit across Pakistan on orders over Rs. 3,500 • Pure Cash on Delivery (COD)</span>
+  </div>
+
+  <!-- Main Sticky Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-inner">
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-nav-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <!-- Brand Identity -->
+        <a href="/" class="site-logo">
+          Maison <span>&amp;</span> Co.
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav>
+          <ul class="desktop-nav">
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="/shop">Catalog</a></li>
+            <li><a href="/categories">Departments</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Header Action Controls -->
+        <div class="header-actions">
+          
+          <!-- Search Form -->
+          <form class="header-search header-search-form" role="search">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="search" placeholder="Search catalog..." aria-label="Search items" />
+          </form>
+
+          <!-- Wishlist -->
+          <a href="/wishlist" class="icon-btn" id="nav-wishlist-link" title="Wishlist">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            <span class="cart-badge" id="wishlist-count-badge" style="display:none;">0</span>
+          </a>
+
+          <!-- Customer Account / Auth Link -->
+          <a href="/login" class="icon-btn" id="nav-account-link" title="Customer Account">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </a>
+          <span id="nav-user-name" style="font-size:0.85rem; font-weight:600; display:none; max-width:90px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"></span>
+
+          <!-- Shopping Cart Link -->
+          <a href="/cart" class="icon-btn" id="nav-cart-link" title="Shopping Bag">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="cart-badge" id="cart-count-badge" style="display:none;">0</span>
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop"></div>
+    <div class="mobile-drawer-content">
+      <div class="mobile-drawer-header">
+        <span class="site-logo" style="font-size: 1.25rem;">Maison <span>&amp;</span> Co.</span>
+        <button id="mobile-drawer-close" style="padding: 0.5rem; color: var(--text-muted); font-size: 1.5rem;">&times;</button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Catalog</a></li>
+        <li><a href="/categories">Departments</a></li>
+        <li><a href="/wishlist">Saved Artifacts</a></li>
+        <li><a href="/cart">Shopping Bag</a></li>
+        <li><a href="/account" id="mobile-nav-account">My Account</a></li>
+        <li><a href="/about">Our Story</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <span class="subheading-label">Curated Collection 2026</span>
+            <h1 class="heading-display">Objects Crafted with Purpose &amp; Permanence.</h1>
+            <p class="hero-description">
+              A curated archive of architectural homeware, precision horology, and minimalist leather goods crafted for contemplative, enduring spaces.
+            </p>
+            <div class="hero-cta-group">
+              <a href="/shop" class="btn btn-primary btn-lg">Explore Catalog</a>
+              <a href="/categories" class="btn btn-outline btn-lg">Browse Departments</a>
+            </div>
+          </div>
+          <div class="hero-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=1200&q=80" alt="Minimalist interior curation" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Departments / Categories -->
+    <section style="padding: 2rem 0 4rem;">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="subheading-label">Disciplines</span>
+            <h2 class="heading-section">Curated Departments</h2>
+          </div>
+          <a href="/categories" class="section-link">View All Departments &rarr;</a>
+        </div>
+
+        <div class="category-grid" id="home-category-grid">
+          <a href="/shop?category=living-interior" class="category-card">
+            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80" alt="Living & Interior" />
+            <div class="category-card-overlay">
+              <h3 class="category-card-title">Living &amp; Interior</h3>
+              <span class="category-card-meta">Lighting, vessels, and stoneware</span>
+            </div>
+          </a>
+          <a href="/shop?category=analog-timepieces" class="category-card">
+            <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800&q=80" alt="Analog Timepieces" />
+            <div class="category-card-overlay">
+              <h3 class="category-card-title">Analog Horology</h3>
+              <span class="category-card-meta">Mechanical chronographs and wall dials</span>
+            </div>
+          </a>
+          <a href="/shop?category=leather-goods" class="category-card">
+            <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=80" alt="Leather Goods" />
+            <div class="category-card-overlay">
+              <h3 class="category-card-title">Leathercraft</h3>
+              <span class="category-card-meta">Vegetable-tanned folios and folios</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trending / Featured Artifacts -->
+    <section style="padding: 2rem 0 5rem;">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="subheading-label">Editorial Selection</span>
+            <h2 class="heading-section">Featured Works</h2>
+          </div>
+          <a href="/shop" class="section-link">View Full Archive &rarr;</a>
+        </div>
+
+        <div class="product-grid" id="home-featured-grid">
+          <!-- Pre-rendered Instant Work Cards (Hydrated dynamically) -->
+          <article class="product-card">
+            <div class="product-card-img-wrap">
+              <a href="/product/krono-apex-automatic-watch">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80" alt="Krono Apex Automatic Watch" />
+              </a>
+              <div class="product-badge-stack"><span class="badge badge-discount">-17%</span></div>
+              <button class="quick-wishlist-btn" data-product-id="1" title="Add to Wishlist" style="position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%; background: white; border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: var(--text-primary); cursor: pointer; z-index: 2;">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              </button>
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-category">Analog Timepieces</div>
+              <h4 class="product-card-title"><a href="/product/krono-apex-automatic-watch">Krono Apex Automatic Watch</a></h4>
+              <div class="product-card-price-row">
+                <span class="price-current">Rs. 349.00</span>
+                <span class="price-compare">Rs. 420.00</span>
+              </div>
+              <div class="product-card-action">
+                <button class="btn btn-outline btn-full btn-sm quick-add-btn" data-product-id="1">Add to Bag</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card-img-wrap">
+              <a href="/product/vanguard-noir-chronograph">
+                <img src="https://images.unsplash.com/photo-1533139502658-0198f920d8e8?w=800&q=80" alt="Vanguard Noir Chronograph" />
+              </a>
+              <div class="product-badge-stack"><span class="badge badge-discount">-17%</span></div>
+              <button class="quick-wishlist-btn" data-product-id="2" title="Add to Wishlist" style="position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%; background: white; border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: var(--text-primary); cursor: pointer; z-index: 2;">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              </button>
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-category">Analog Timepieces</div>
+              <h4 class="product-card-title"><a href="/product/vanguard-noir-chronograph">Vanguard Noir Chronograph</a></h4>
+              <div class="product-card-price-row">
+                <span class="price-current">Rs. 289.00</span>
+                <span class="price-compare">Rs. 350.00</span>
+              </div>
+              <div class="product-card-action">
+                <button class="btn btn-outline btn-full btn-sm quick-add-btn" data-product-id="2">Add to Bag</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card-img-wrap">
+              <a href="/product/sonos-studio-pro-wireless-headphones">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80" alt="Sonos Studio Pro Wireless Headphones" />
+              </a>
+              <button class="quick-wishlist-btn" data-product-id="4" title="Add to Wishlist" style="position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%; background: white; border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: var(--text-primary); cursor: pointer; z-index: 2;">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              </button>
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-category">Audio &amp; Acoustics</div>
+              <h4 class="product-card-title"><a href="/product/sonos-studio-pro-wireless-headphones">Sonos Studio Pro Wireless Headphones</a></h4>
+              <div class="product-card-price-row">
+                <span class="price-current">Rs. 399.00</span>
+              </div>
+              <div class="product-card-action">
+                <button class="btn btn-outline btn-full btn-sm quick-add-btn" data-product-id="4">Add to Bag</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card-img-wrap">
+              <a href="/product/heritage-weekender-duffel-bag">
+                <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=80" alt="Heritage Weekender Duffel Bag" />
+              </a>
+              <button class="quick-wishlist-btn" data-product-id="12" title="Add to Wishlist" style="position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%; background: white; border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: var(--text-primary); cursor: pointer; z-index: 2;">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              </button>
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-category">Leather Goods</div>
+              <h4 class="product-card-title"><a href="/product/heritage-weekender-duffel-bag">Heritage Weekender Duffel Bag</a></h4>
+              <div class="product-card-price-row">
+                <span class="price-current">Rs. 295.00</span>
+              </div>
+              <div class="product-card-action">
+                <button class="btn btn-outline btn-full btn-sm quick-add-btn" data-product-id="12">Add to Bag</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Value Propositions Strip -->
+    <section class="features-strip">
+      <div class="container">
+        <div class="features-grid">
+          <div class="feature-item">
+            <div class="feature-icon-box">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="1" y="3" width="15" height="13"></rect>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+              </svg>
+            </div>
+            <h4 class="feature-title">Complimentary Transit</h4>
+            <p class="feature-desc">All orders exceeding Rs. 3,500 receive insured, complimentary courier dispatch nationwide.</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon-box">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="M7 15h0M2 9.5h20"></path>
+              </svg>
+            </div>
+            <h4 class="feature-title">Cash on Delivery (COD)</h4>
+            <p class="feature-desc">Pay upon physical arrival and inspection of your parcel. No upfront card charges required.</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon-box">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h4 class="feature-title">Authenticity Guaranteed</h4>
+            <p class="feature-desc">Each object is serialized and inspected by our atelier before transit authorization.</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon-box">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+              </svg>
+            </div>
+            <h4 class="feature-title">Effortless Returns</h4>
+            <p class="feature-desc">Enjoy a 14-day return privilege on all catalog artifacts in original presentation packaging.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Subscription Section -->
+    <section class="newsletter-section">
+      <span class="subheading-label">The Journal</span>
+      <h2 class="heading-section" style="margin-top: 0.5rem;">Join the Maison Atelier</h2>
+      <p style="color: var(--text-secondary); max-width: 520px; margin: 0.75rem auto 0;">
+        Receive private exhibition previews, seasonal catalog releases, and an exclusive Rs. 500 privilege voucher for your first acquisition.
+      </p>
+      <form class="newsletter-form" id="newsletter-form">
+        <input type="email" id="nl-email" placeholder="Enter your email address" required />
+        <button type="submit" id="nl-submit-btn" class="btn btn-primary">Subscribe</button>
+      </form>
+      <div id="nl-message" style="margin-top: 1rem; font-size: 0.85rem; font-weight: 500;"></div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Maison &amp; Co.</h3>
+          <p style="font-size: 0.925rem; line-height: 1.6; max-width: 320px;">
+            An independent purveyor of modern utilitarian artifacts, architectural homeware, and durable lifestyle objects.
+          </p>
+          <div style="margin-top: 1.5rem; font-size: 0.825rem; color: #7B7872;">
+            Payment: Strictly Cash on Delivery (COD) across Pakistan.
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Departments</h4>
+          <ul>
+            <li><a href="/shop?category=living-interior">Living &amp; Interior</a></li>
+            <li><a href="/shop?category=analog-timepieces">Analog Timepieces</a></li>
+            <li><a href="/shop?category=leather-goods">Leathercraft</a></li>
+            <li><a href="/shop?category=objects-everyday">Objects &amp; Everyday</a></li>
+            <li><a href="/shop?category=ceramics-tableware">Ceramics &amp; Tableware</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Client Services</h4>
+          <ul>
+            <li><a href="/account/orders">Track Acquisition</a></li>
+            <li><a href="/cart">Shopping Bag</a></li>
+            <li><a href="/wishlist">Saved Wishlist</a></li>
+            <li><a href="/about">About Our Atelier</a></li>
+            <li><a href="/contact">Inquiries &amp; Studio</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Governance</h4>
+          <ul>
+            <li><a href="/privacy-policy">Privacy Protocol</a></li>
+            <li><a href="/terms-and-conditions">Terms of Service</a></li>
+            <li><a href="/login">Customer Sign In</a></li>
+            <li><a href="/register">Create Account</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Maison &amp; Co. All rights reserved. Full-Stack E-Commerce MVP.</span>
+        <span>Built with Node.js, Express, MySQL 8.0 &amp; Vanilla ES6+.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script>
+    // Quick Add to Cart & Wishlist Handlers for Homepage
+    async function handleQuickAddToCart(productId, btn) {
+      if (!window.api.isAuthenticated()) {
+        showToast('Sign In Required', 'Please log in to add items to your shopping bag.', 'info');
+        setTimeout(() => {
+          window.location.href = `/login?redirect=${encodeURIComponent(window.location.pathname)}`;
+        }, 1200);
+        return;
+      }
+
+      const orig = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = `<span class="spinner"></span> Adding...`;
+
+      try {
+        const res = await window.api.post('/cart', { productId: parseInt(productId, 10), quantity: 1 });
+        if (res.success) {
+          showToast('Added to Cart', 'Item added to your shopping bag.', 'success');
+          window.dispatchEvent(new CustomEvent('cart-updated'));
+        }
+      } catch (err) {
+        showToast('Cart Error', err.message, 'error');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = orig;
+      }
+    }
+
+    async function handleQuickAddToWishlist(productId, btn) {
+      if (!window.api.isAuthenticated()) {
+        showToast('Sign In Required', 'Please log in to save items to your wishlist.', 'info');
+        setTimeout(() => {
+          window.location.href = `/login?redirect=${encodeURIComponent(window.location.pathname)}`;
+        }, 1200);
+        return;
+      }
+
+      try {
+        const res = await window.api.post('/wishlist', { productId: parseInt(productId, 10) });
+        if (res.success) {
+          showToast('Saved to Wishlist', 'Artifact saved to your wishlist.', 'success');
+          window.dispatchEvent(new CustomEvent('wishlist-updated'));
+          btn.style.color = '#C45A30';
+        }
+      } catch (err) {
+        showToast('Wishlist Error', err.message, 'error');
+      }
+    }
+
+    function attachCardListeners(container) {
+      container.querySelectorAll('.quick-add-btn').forEach(btn => {
+        btn.onclick = (e) => {
+          e.preventDefault();
+          handleQuickAddToCart(btn.getAttribute('data-product-id'), btn);
+        };
+      });
+
+      container.querySelectorAll('.quick-wishlist-btn').forEach(btn => {
+        btn.onclick = (e) => {
+          e.preventDefault();
+          handleQuickAddToWishlist(btn.getAttribute('data-product-id'), btn);
+        };
+      });
+    }
+
+    // Dynamic Live Load & Hydration
+    document.addEventListener('DOMContentLoaded', async () => {
+      const grid = document.getElementById('home-featured-grid');
+      if (!grid) return;
+
+      // Attach to initial pre-rendered cards
+      attachCardListeners(grid);
+
+      try {
+        const res = await window.api.get('/products', { limit: 8, sort: 'featured' });
+        if (res.success && res.data && res.data.length > 0) {
+          grid.innerHTML = res.data.map(prod => {
+            const img = prod.primary_image || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80';
+            const price = parseFloat(prod.price).toLocaleString('en-US', { minimumFractionDigits: 2 });
+            const comparePrice = prod.compare_at_price 
+              ? `<span class="price-compare">Rs. ${parseFloat(prod.compare_at_price).toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>` 
+              : '';
+            const isOutOfStock = prod.stock_quantity <= 0;
+
+            return `
+              <article class="product-card">
+                <div class="product-card-img-wrap">
+                  <a href="/product/${escapeHTML(prod.slug)}">
+                    <img src="${escapeHTML(img)}" alt="${escapeHTML(prod.name)}" loading="lazy" />
+                  </a>
+                  ${prod.discount_percent > 0 ? `<div class="product-badge-stack"><span class="badge badge-discount">-${prod.discount_percent}%</span></div>` : ''}
+                  <button class="quick-wishlist-btn" data-product-id="${prod.id}" title="Add to Wishlist" style="position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%; background: white; border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: var(--text-primary); cursor: pointer; z-index: 2;">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                  </button>
+                </div>
+                <div class="product-card-body">
+                  <div class="product-card-category">${escapeHTML(prod.category_name || 'Curated')}</div>
+                  <h4 class="product-card-title"><a href="/product/${escapeHTML(prod.slug)}">${escapeHTML(prod.name)}</a></h4>
+                  <div class="product-card-price-row">
+                    <span class="price-current">Rs. ${price}</span>
+                    ${comparePrice}
+                  </div>
+                  <div class="product-card-action">
+                    <button class="btn btn-outline btn-full btn-sm quick-add-btn" data-product-id="${prod.id}" ${isOutOfStock ? 'disabled' : ''}>
+                      ${isOutOfStock ? 'Sold Out' : 'Add to Bag'}
+                    </button>
+                  </div>
+                </div>
+              </article>
+            `;
+          }).join('');
+
+          attachCardListeners(grid);
+        }
+      } catch (err) {
+        console.warn('Live hydration fallback retained:', err);
+      }
+    });
+  </script>
+</body>
+</html>
